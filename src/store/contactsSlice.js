@@ -4,8 +4,6 @@ import storage from 'redux-persist/lib/storage';
 import { initialContacts } from 'data/contacts';
 
 
-
-
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState: {
@@ -13,17 +11,13 @@ const contactsSlice = createSlice({
     },
     reducers: {
         addContact(state, action) {
-            if (state.contacts.find(contact => contact.name.toLowerCase() === action.payload.name.toLowerCase())) {
-                alert(`${action.payload.name} is already in contact`);
-            } else {
-                state.contacts = [
-                    {
-                        id: action.payload.id,
-                        name: action.payload.name,
-                        number: action.payload.number,
-                    },
-                    ...state.contacts];
-            };
+            state.contacts = [
+                {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    number: action.payload.number,
+                },
+                ...state.contacts];
             },
 
         deleteContact(state, action) {

@@ -2,11 +2,12 @@
 import { ListItem, InfoContainer, InfoItemContainer, Data, DeleteBtn } from './ContactItem.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'store/contactsSlice';
+import { getContacts, getFilter } from 'store/selectors';
 
 function ContactItem() {
     const dispatch = useDispatch();
-    const normalizedFilter = useSelector(state => state.filter.filter)?.toLowerCase() || '';
-    const contacts = useSelector(state => state.contacts.contacts);
+    const normalizedFilter = useSelector(getFilter)?.toLowerCase() || '';
+    const contacts = useSelector(getContacts);
     const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
 
     return (

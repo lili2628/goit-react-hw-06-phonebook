@@ -5,10 +5,11 @@ import Filter from './Filter';
 import ContactList from './ContactList';
 import ContactItem from "./ContactItem";
 import { Container, Title, SubTitle, ContactContainer } from './App.styled';
+import { getContacts } from 'store/selectors';
 
 function App() { 
 
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(getContacts);
     return (
       <Container>
         <Title>Phonebook</Title>
